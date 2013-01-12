@@ -32,7 +32,7 @@ public:
 	void update();
 	void close();
 
-	bool done();
+	bool isDone() { return isRunning;}
 	void setDone(bool value) { isRunning = value; }
 
 	//states
