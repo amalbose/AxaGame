@@ -21,9 +21,17 @@
 #include <iostream>
 #include "engine/game.h"
 
-int main(){
+int main(int argc, char *argv) {
 
-	std::cout<< "in Main";
+	if (!Game::Instance().init(argc, argv))
+		return 0;
+
+	while (!Game::Instance().isDone()) {
+		Game::Instance().update();
+	}
+
+	Game::Instance().close();
+
 	return 0;
 }
 
