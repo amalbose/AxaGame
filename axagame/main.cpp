@@ -21,7 +21,7 @@
 #include <iostream>
 #include "engine/game.h"
 
-int main(int argc, char *argv) {
+int main(int argc, char **argv) {
 
 	if (!Game::Instance().init(argc, argv))
 		return 0;

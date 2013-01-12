@@ -22,6 +22,7 @@
 #define EVENT_H_
 
 #include "imports.h"
+#include "singleton.h"
 
 class Event: public irr::IEventReceiver {
 
@@ -30,6 +31,8 @@ public:
 	enum MouseButtonType {
 		MOUSE_LEFT, MOUSE_RIGHT, MOUSE_MIDDLE, MOUSE_COUNT,
 	};
+
+	Event();
 
 	bool OnEvent(const irr::SEvent& event);
 

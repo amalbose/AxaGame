@@ -28,7 +28,7 @@
 class GameClass {
 public:
 
-	int init(int argc, char* argv);
+	int init(int argc, char** argv);
 	void update();
 	void close();
 

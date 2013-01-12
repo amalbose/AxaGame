@@ -21,17 +21,25 @@
 #include "game.h"
 #include "config.h"
 
-int GameClass::init(int argc, char *argv) {
+int GameClass::init(int argc, char **argv) {
 
 	isWindowActive = true;
 	isRunning = true;
 
 	//Initialize Config
-	if(!Config::Instance().initConfig()) {
+	if (!Config::Instance().initConfig()) {
 		return 1;
 	}
 
 	//Setting up IrrlichDevice
 
 	return 1;
+}
+
+void GameClass::update() {
+
+}
+
+void GameClass::close() {
+
 }
