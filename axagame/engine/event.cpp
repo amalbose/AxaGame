@@ -18,20 +18,49 @@
  *	along with this program.  If not, see <http://www.gnu.org/licenses/>.
  **************************************************************************************/
 
-#include "game.h"
-#include "config.h"
+#include "event.h"
 
-int GameClass::init(int argc, char *argv) {
+Event::Event() :
+		mouseX(0), mouseY(0) {
+	resetEvents();
+}
 
-	isWindowActive = true;
-	isRunning = true;
-
-	//Initialize Config
-	if(!Config::Instance().initConfig()) {
-		return 1;
+void Event::resetEvents() {
+	for (int i = 0; i < KEY_KEY_CODES_COUNT; i++) {
+		Keys[i] = 0;
 	}
+}
 
-	//Setting up IrrlichDevice
+bool Event::OnEvent(const SEvent &Event) {
+	switch (Event.EventType) {
+	case EET_KEY_INPUT_EVENT:
 
-	return 1;
+		// Send key press events
+		if (Event.KeyInput.PressedDown) {
+
+		} else if (!Event.KeyInput.PressedDown) {
+
+		}
+		break;
+	case EET_MOUSE_INPUT_EVENT:
+
+		switch (Event.MouseInput.Event) {
+		case EMIE_LMOUSE_PRESSED_DOWN:
+		case EMIE_RMOUSE_PRESSED_DOWN:
+		case EMIE_MMOUSE_PRESSED_DOWN:
+		case EMIE_LMOUSE_LEFT_UP:
+		case EMIE_RMOUSE_LEFT_UP:
+		case EMIE_MMOUSE_LEFT_UP:
+		case EMIE_MOUSE_MOVED:
+		case EMIE_MOUSE_WHEEL:
+		default:
+			break;
+		}
+		return false;
+		break;
+	case EET_GUI_EVENT:
+	default:
+		break;
+	}
+	return false;
 }

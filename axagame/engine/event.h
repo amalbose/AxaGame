@@ -18,20 +18,38 @@
  *	along with this program.  If not, see <http://www.gnu.org/licenses/>.
  **************************************************************************************/
 
-#include "game.h"
-#include "config.h"
+#ifndef EVENT_H_
+#define EVENT_H_
 
-int GameClass::init(int argc, char *argv) {
+#include "imports.h"
 
-	isWindowActive = true;
-	isRunning = true;
+class Event: public irr::IEventReceiver {
 
-	//Initialize Config
-	if(!Config::Instance().initConfig()) {
-		return 1;
-	}
+public:
 
-	//Setting up IrrlichDevice
+	enum MouseButtonType {
+		MOUSE_LEFT, MOUSE_RIGHT, MOUSE_MIDDLE, MOUSE_COUNT,
+	};
 
-	return 1;
-}
+	bool OnEvent(const irr::SEvent& event);
+
+	bool onEvent(const irr::SEvent& event) {	return OnEvent(event);	}
+
+	void resetEvents();
+	bool getKeyState(int key) const { return Keys[key]; }
+	bool getMouseState(int button) const { return MouseButtons[button]; }
+
+	int getMouseX() const { return mouseX; }
+	int getMouseY() const { return mouseY; }
+
+private:
+	bool Keys[KEY_KEY_CODES_COUNT], MouseButtons[MOUSE_COUNT];
+	int mouseX,mouseY;
+
+	void setKeyState(int key, bool state) { Keys[key] = state; }
+	void setMouseState(int button, bool state) { MouseButtons[button] = state; }
+};
+
+typedef Singleton<Event> EventReceiver;
+
+#endif /* EVENT_H_ */
