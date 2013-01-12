@@ -15,5 +15,9 @@
 # Directory
 Debug
 
+# Project files
+.cproject
+.project
+
 # Temp files
 *~
