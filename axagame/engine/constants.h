@@ -22,7 +22,7 @@
 #define CONSTANTS_H_
 
 const char * const GAME_VERSION = "v0.1.1";
-
+const char * const GAME_NAME = "AxaGame";
 
 
 #endif /* CONSTANTS_H_ */
