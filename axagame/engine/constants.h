@@ -21,8 +21,7 @@
 #ifndef CONSTANTS_H_
 #define CONSTANTS_H_
 
-const char * const GAME_VERSION = "v0.1.1";
-const char * const GAME_NAME = "AxaGame";
-
+const char * GAME_VERSION = "v0.1.1";
+const char * GAME_NAME = "AxaGame";
 
 #endif /* CONSTANTS_H_ */
