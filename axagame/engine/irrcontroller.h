@@ -23,19 +23,23 @@
 
 #include "imports.h"
 #include "globals.h"
-
+#include "defaults.h"
 
 class IrrlichtController {
 
 public:
-	int init(E_DRIVER_TYPE deviceType = EDT_OPENGL,
-			const core::dimension2d<u32>& windowSize,
-			u32 bits = 32,
-			bool fullscreen = false,
-			bool stencilbuffer = false,
-			bool vsync = false,
-			IEventReceiver* receiver = 0);
+	int init(E_DRIVER_TYPE deviceType, const core::dimension2d<u32>& windowSize, u32 bits, bool fullscreen,
+			bool stencilbuffer, bool vsync, IEventReceiver* receiver);
 
+	void close();
+	void setClearColor(SColor color) { clearColor = color;}
+	bool beginSceneRender();
+	bool beginSceneRender(SColor clearColorValue);
+	void endSceneRender();
+
+private:
+	SColor clearColor;
+	bool showCursor;
 };
 
 #endif /* IRRCONTROLLER_H_ */

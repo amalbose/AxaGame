@@ -18,5 +18,47 @@
  *	along with this program.  If not, see <http://www.gnu.org/licenses/>.
  **************************************************************************************/
 
+#include "constants.h"
 #include "irrcontroller.h"
 
+int IrrlichtController::init(E_DRIVER_TYPE deviceType, const core::dimension2d<u32>& windowSize, u32 bits,
+		bool fullscreen, bool stencilbuffer, bool vsync, IEventReceiver* receiver) {
+
+	irrDevice = createDevice(deviceType, windowSize, bits, fullscreen, stencilbuffer, vsync, receiver);
+
+	if (irrDevice == NULL)
+		return 1;
+
+	irrDevice->setWindowCaption((wchar_t*) GAME_NAME);
+	irrDevice->setEventReceiver(receiver);
+	irrDevice->getCursorControl()->setVisible(false);
+
+	// Save off global pointers
+	irrDriver = irrDevice->getVideoDriver();
+	irrScene = irrDevice->getSceneManager();
+	irrGUI = irrDevice->getGUIEnvironment();
+	irrFile = irrDevice->getFileSystem();
+	irrTimer = irrDevice->getTimer();
+
+	return 0;
+}
+
+void IrrlichtController::close() {
+	irrDevice->drop();
+}
+
+bool IrrlichtController::beginSceneRender(SColor clearColorValue) {
+	return irrDriver->beginScene(true, true, clearColorValue);
+}
+
+bool IrrlichtController::beginSceneRender() {
+	if (clearColor == NULL) {
+		return false;
+	} else {
+		return beginSceneRender(clearColor);
+	}
+}
+
+void IrrlichtController::endSceneRender() {
+	irrDriver->endScene();
+}
