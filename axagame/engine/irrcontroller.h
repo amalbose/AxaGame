@@ -24,6 +24,7 @@
 #include "imports.h"
 #include "globals.h"
 #include "defaults.h"
+#include "singleton.h"
 
 class IrrlichtController {
 
@@ -41,5 +42,8 @@ private:
 	SColor clearColor;
 	bool showCursor;
 };
+
+
+typedef Singleton<IrrlichtController> Controller;
 
 #endif /* IRRCONTROLLER_H_ */
