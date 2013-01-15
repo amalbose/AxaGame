@@ -32,8 +32,8 @@ public:
 	void update();
 	void close();
 
-	bool isDone() { return isRunning;}
-	void setDone(bool value) { isRunning = value; }
+	bool isDone() { return !isRunning;}
+	void setDone(bool value) { isRunning = !value; }
 
 	//states
 	void changeState(State* state);
@@ -44,6 +44,7 @@ private:
 
 	bool isRunning, isWindowActive;
 	State *currentState;
+	float timeStamp,sleepRate;
 };
 
 typedef Singleton<GameClass> Game;

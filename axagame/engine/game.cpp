@@ -20,24 +20,40 @@
 
 #include "game.h"
 #include "config.h"
+#include "irrcontroller.h"
+#include <iostream>
 
 int GameClass::init(int argc, char **argv) {
 
 	isWindowActive = true;
 	isRunning = true;
+	sleepRate = 120.0f;
 
 	//Initialize Config
-	if (!Config::Instance().initConfig()) {
+	if (Config::Instance().initConfig()) {
+		std::cout<<"failed config";
 		return 1;
 	}
 
 	//Setting up IrrlichDevice
-
-	return 1;
+	if(Controller::Instance().init(EDT_OPENGL,
+			(core::dimension2d<u32>(1366, 768)), 32, true, false, false, 0)) {
+		std::cout<<"failed instance creation";
+		return 1;
+	}
+	return 0;
 }
 
 void GameClass::update() {
+	float frameTime = (irrTimer->getTime() - timeStamp) * 0.001f;
+	timeStamp = irrTimer->getTime();
 
+	// Limit frame rate
+	float extraTime = 1.0f / sleepRate - frameTime;
+	if(extraTime > 0.0f) {
+		irrDevice->sleep((u32)(extraTime * 1000));
+	}
+	currentState->update(frameTime);
 }
 
 void GameClass::close() {
