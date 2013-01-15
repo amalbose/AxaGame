@@ -18,16 +18,17 @@
  *	along with this program.  If not, see <http://www.gnu.org/licenses/>.
  **************************************************************************************/
 
-#include <iostream>
 #include "engine/game.h"
 
 int main(int argc, char **argv) {
 
-	if (!Game::Instance().init(argc, argv))
+	if (Game::Instance().init(argc, argv)) {
 		return 0;
-
+	}
+	std::cout << Game::Instance().isDone() << std::endl;
 	while (!Game::Instance().isDone()) {
 		Game::Instance().update();
+		std::cout << Game::Instance().isDone();
 	}
 
 	Game::Instance().close();
