@@ -37,8 +37,8 @@
 							<tool id="cdt.managedbuild.tool.gnu.c.compiler.exe.debug.1410739267" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.exe.debug">
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.exe.debug.option.optimization.level.213549991" name="Optimization Level" superClass="gnu.c.compiler.exe.debug.option.optimization.level" valueType="enumerated"/>
 								<option id="gnu.c.compiler.exe.debug.option.debugging.level.1888157084" name="Debug Level" superClass="gnu.c.compiler.exe.debug.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
-								<option id="gnu.c.compiler.option.include.paths.1869493596" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath"/>
-								<option id="gnu.c.compiler.option.include.files.2032232996" name="Include files (-include)" superClass="gnu.c.compiler.option.include.files" valueType="includeFiles"/>
+								<option id="gnu.c.compiler.option.include.paths.1869493596" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths"/>
+								<option id="gnu.c.compiler.option.include.files.2032232996" name="Include files (-include)" superClass="gnu.c.compiler.option.include.files"/>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.75245346" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.exe.debug.1634167093" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.exe.debug"/>
@@ -70,8 +70,10 @@
 					</folderInfo>
 					<sourceEntries>
 						<entry excluding="axagame|engine" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
-						<entry excluding="engine" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame"/>
+						<entry excluding="utils|log|engine" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame/engine"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame/log"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame/utils"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -120,8 +122,10 @@
 					</folderInfo>
 					<sourceEntries>
 						<entry excluding="engine|axagame" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
-						<entry excluding="engine" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame"/>
+						<entry excluding="utils|log|engine" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame/engine"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame/log"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame/utils"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
