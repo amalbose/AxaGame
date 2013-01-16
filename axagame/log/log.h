@@ -21,9 +21,12 @@
 #ifndef LOG_H_
 #define LOG_H_
 
-#include <iostream>
-//#include <utils/utils.h>
+#include <sstream>
+#include <string>
+#include <stdio.h>
+#include "../utils/utils.h"
 
+//LOG values
 enum LOG {
 	ERROR, WARN, INFO, DEBUG
 };
@@ -34,15 +37,22 @@ public:
 	Log();
 	virtual ~Log();
 	std::ostringstream& get(LOG level = INFO);
-	static LOG& ReportingLevel();
+	static LOG& reportingLevel();
 
+	static std::string toString(LOG level);
+	static LOG fromString(const std::string& level);
 protected:
-	//std::ostringstream os;
+	std::ostringstream os;
 private:
 
 	Log(const Log&);
 	Log& operator =(const Log&);
-	LOG messageLevel;
 };
+
+typedef Log FILELog;
+
+#define Logger(level) \
+    if (level > FILELog::reportingLevel()) ; \
+    else Log().get(level)
 
 #endif /* LOG_H_ */

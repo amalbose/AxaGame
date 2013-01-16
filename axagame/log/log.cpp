@@ -21,24 +21,40 @@
 #include "log.h"
 
 Log::Log() {
-	// TODO Auto-generated constructor stub
-
 }
-/*
-std::ostringstream& Log::get(LOG level)
-{
-   os << "- " << NowTime();
-   os << " " << ToString(level) << ": ";
-   os << std::string(level > logDEBUG ? 0 : level - logDEBUG, '\t');
-   messageLevel = level;
-   return os;
-}*/
-Log::~Log()
-{
- /*  if (messageLevel >= Log::ReportingLevel())
-   {
-      os << std::endl;
-      fprintf(stderr, "%s", os.str().c_str());
-      fflush(stderr);
-   }*/
+
+std::ostringstream& Log::get(LOG level) {
+	os << "[" << toString(level) << "] : ";
+	os << Utils::getCurrentTime() << " > ";
+	os << std::string(level > DEBUG ? level - DEBUG : 0, '\t');
+	return os;
+}
+
+Log::~Log() {
+	os << std::endl;
+	fprintf(stderr, "%s", os.str().c_str());
+    fflush(stderr);
+}
+
+LOG& Log::reportingLevel() {
+	static LOG reportingLevel = DEBUG;
+	return reportingLevel;
+}
+
+std::string Log::toString(LOG level) {
+	static const char* const levels[] = { "ERROR", "WARN", "INFO", "DEBUG" };
+	return levels[level];
+}
+
+LOG Log::fromString(const std::string& level) {
+	if (level == "DEBUG")
+		return DEBUG;
+	if (level == "INFO")
+		return INFO;
+	if (level == "WARN")
+		return WARN;
+	if (level == "ERROR")
+		return ERROR;
+	Log().get(WARN) << "Unknown logging level '" << level << "'. Using INFO level as default.";
+	return INFO;
 }
