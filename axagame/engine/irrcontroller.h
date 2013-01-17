@@ -26,6 +26,7 @@
 #include "defaults.h"
 #include "singleton.h"
 #include "constants.h"
+#include "../log/log.h"
 
 class IrrlichtController {
 

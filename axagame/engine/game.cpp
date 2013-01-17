@@ -28,14 +28,14 @@ int GameClass::init(int argc, char **argv) {
 
 	//Initialize Config
 	if (Config::Instance().initConfig()) {
-		std::cout<<"failed config";
+		Logger(ERROR) << "Initialization of config file failed.";
 		return 1;
 	}
 
 	//Setting up IrrlichDevice
 	if(Controller::Instance().init(EDT_OPENGL,
 			(core::dimension2d<u32>(1366, 768)), 32, true, false, false, 0)) {
-		std::cout<<"failed instance creation";
+		Logger(ERROR) << "Failed to initialize Controller.";
 		return 1;
 	}
 	return 0;

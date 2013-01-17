@@ -25,9 +25,10 @@ int IrrlichtController::init(E_DRIVER_TYPE deviceType, const core::dimension2d<u
 
 	irrDevice = createDevice(deviceType, windowSize, bits, fullscreen, stencilbuffer, vsync, receiver);
 
-	if (irrDevice == NULL)
+	if (irrDevice == NULL) {
+		Logger(ERROR) << "Setting up Irrlicht Device failed.";
 		return 1;
-
+	}
 	irrDevice->setWindowCaption((wchar_t*) GAME_NAME);
 	irrDevice->setEventReceiver(receiver);
 	irrDevice->getCursorControl()->setVisible(false);
@@ -52,6 +53,7 @@ bool IrrlichtController::beginSceneRender(SColor clearColorValue) {
 
 bool IrrlichtController::beginSceneRender() {
 	if (clearColor == NULL) {
+		Logger(WARN) << "Clear color not set.";
 		return false;
 	} else {
 		return beginSceneRender(clearColor);
