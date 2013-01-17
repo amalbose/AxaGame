@@ -50,7 +50,7 @@ private:
 	Log(const Log&);
 	Log& operator =(const Log&);
 	FILE *logFile;
-	char* logFileName = "axagame.log";
+	char* logFileName = LOG_NAME;
 };
 
 typedef Log FILELog;
