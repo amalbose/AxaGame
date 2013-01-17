@@ -50,7 +50,7 @@ private:
 	Log(const Log&);
 	Log& operator =(const Log&);
 	FILE *logFile;
-	char* logFileName = LOG_NAME;
+	char const * logFileName;
 };
 
 typedef Log FILELog;

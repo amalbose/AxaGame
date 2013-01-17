@@ -20,7 +20,7 @@
 
 #include "log.h"
 
-Log::Log() {
+Log::Log():logFileName(LOG_NAME) {
 	logFile = fopen(logFileName, "a");
 	if (logFile == NULL) {
 		std::cout << "Error initializing log file : " << logFileName;
