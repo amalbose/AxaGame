@@ -18,7 +18,6 @@
  *	along with this program.  If not, see <http://www.gnu.org/licenses/>.
  **************************************************************************************/
 
-#include "constants.h"
 #include "irrcontroller.h"
 
 int IrrlichtController::init(E_DRIVER_TYPE deviceType, const core::dimension2d<u32>& windowSize, u32 bits,

@@ -25,6 +25,7 @@
 #include "globals.h"
 #include "defaults.h"
 #include "singleton.h"
+#include "constants.h"
 
 class IrrlichtController {
 
