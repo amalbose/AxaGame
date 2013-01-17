@@ -21,9 +21,13 @@
 #include "log.h"
 
 Log::Log() {
+	logFile = fopen(logFileName, "a");
+	if (logFile == NULL) {
+		std::cout << "Error initializing log file : " << logFileName;
+	}
 }
 
-std::ostringstream& Log::get(LOG level) {
+std::ostringstream& Log::getStream(LOG level) {
 	os << "[" << toString(level) << "] : ";
 	os << Utils::getCurrentTime() << " > ";
 	os << std::string(level > DEBUG ? level - DEBUG : 0, '\t');
@@ -33,7 +37,11 @@ std::ostringstream& Log::get(LOG level) {
 Log::~Log() {
 	os << std::endl;
 	fprintf(stderr, "%s", os.str().c_str());
-    fflush(stderr);
+	if (logFile != NULL) {
+		fprintf(logFile, "%s", os.str().c_str());
+		fclose(logFile);
+	}
+	fflush(stderr);
 }
 
 LOG& Log::reportingLevel() {
@@ -55,6 +63,5 @@ LOG Log::fromString(const std::string& level) {
 		return WARN;
 	if (level == "ERROR")
 		return ERROR;
-	Log().get(WARN) << "Unknown logging level '" << level << "'. Using INFO level as default.";
 	return INFO;
 }

@@ -25,6 +25,7 @@
 #include <string>
 #include <stdio.h>
 #include "../utils/utils.h"
+#include "../engine/constants.h"
 
 //LOG values
 enum LOG {
@@ -36,23 +37,26 @@ class Log {
 public:
 	Log();
 	virtual ~Log();
-	std::ostringstream& get(LOG level = INFO);
+	std::ostringstream& getStream(LOG level = INFO);
 	static LOG& reportingLevel();
 
 	static std::string toString(LOG level);
 	static LOG fromString(const std::string& level);
+
 protected:
 	std::ostringstream os;
-private:
 
+private:
 	Log(const Log&);
 	Log& operator =(const Log&);
+	FILE *logFile;
+	char* logFileName = "axagame.log";
 };
 
 typedef Log FILELog;
 
 #define Logger(level) \
     if (level > FILELog::reportingLevel()) ; \
-    else Log().get(level)
+    else Log().getStream(level)
 
 #endif /* LOG_H_ */
