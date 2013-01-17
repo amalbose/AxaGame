@@ -20,8 +20,6 @@
 
 #include "config.h"
 
-#include "defaults.h"
-
 int ConfigClass::initConfig() {
 	return resetConfig();
 }

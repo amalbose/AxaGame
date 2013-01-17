@@ -21,6 +21,7 @@
 #define CONFIG_H_
 
 #include "singleton.h"
+#include "defaults.h"
 
 class ConfigClass {
 public:
