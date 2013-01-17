@@ -19,9 +19,6 @@
  **************************************************************************************/
 
 #include "game.h"
-#include "config.h"
-#include "irrcontroller.h"
-#include <iostream>
 
 int GameClass::init(int argc, char **argv) {
 
