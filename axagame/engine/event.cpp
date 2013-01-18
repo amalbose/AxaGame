@@ -32,14 +32,12 @@ void Event::resetEvents() {
 }
 
 bool Event::OnEvent(const SEvent &event) {
-	Logger(INFO) << "Event";
 
 	switch (event.EventType) {
 	case EET_KEY_INPUT_EVENT:
 		// Send key press events
 		if (event.KeyInput.PressedDown) {
 			if (event.KeyInput.Key == KEY_KEY_X) {
-				Logger(DEBUG) << "KeyPress";
 				Game::Instance().setDone(true);
 			}
 		} else if (!event.KeyInput.PressedDown) {

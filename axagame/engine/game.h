@@ -43,6 +43,7 @@ public:
 	//states
 	void changeState(State* state);
 	State *getState() {		return currentState;	}
+	IEventReceiver* event;
 
 private:
 

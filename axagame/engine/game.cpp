@@ -25,16 +25,15 @@ int GameClass::init(int argc, char **argv) {
 	isWindowActive = true;
 	isRunning = true;
 	sleepRate = 120.0f;
-
 	//Initialize Config
 	if (Config::Instance().initConfig()) {
 		Logger(ERROR) << "Initialization of config file failed.";
 		return 1;
 	}
-
+	event = new Event();
 	//Setting up IrrlichDevice
 	if(Controller::Instance().init(EDT_OPENGL,
-			(core::dimension2d<u32>(1024, 768)), 32, false, false, false, 0)) {
+			(core::dimension2d<u32>(1024, 768)), 32, false, false, false, event)) {
 		Logger(ERROR) << "Failed to initialize Controller.";
 		return 1;
 	}
@@ -42,7 +41,10 @@ int GameClass::init(int argc, char **argv) {
 }
 
 void GameClass::update() {
+
+	irrDevice->run();
 	Controller::Instance().beginSceneRender(SColor(255, 0, 0, 0));
+	irrScene->drawAll();
 	Controller::Instance().endSceneRender();
 	/*float frameTime = (irrTimer->getTime() - timeStamp) * 0.001f;
 	timeStamp = irrTimer->getTime();
@@ -53,8 +55,9 @@ void GameClass::update() {
 		irrDevice->sleep((u32)(extraTime * 1000));
 	}
 	currentState->update(frameTime);*/
+
 }
 
 void GameClass::close() {
-
+	irrDevice->drop();
 }
