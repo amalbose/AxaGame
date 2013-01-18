@@ -23,6 +23,7 @@
 
 #include "imports.h"
 #include "singleton.h"
+#include "game.h"
 
 class Event: public irr::IEventReceiver {
 

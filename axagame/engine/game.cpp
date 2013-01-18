@@ -34,7 +34,7 @@ int GameClass::init(int argc, char **argv) {
 
 	//Setting up IrrlichDevice
 	if(Controller::Instance().init(EDT_OPENGL,
-			(core::dimension2d<u32>(1366, 768)), 32, true, false, false, 0)) {
+			(core::dimension2d<u32>(1024, 768)), 32, false, false, false, 0)) {
 		Logger(ERROR) << "Failed to initialize Controller.";
 		return 1;
 	}
@@ -42,7 +42,9 @@ int GameClass::init(int argc, char **argv) {
 }
 
 void GameClass::update() {
-	float frameTime = (irrTimer->getTime() - timeStamp) * 0.001f;
+	Controller::Instance().beginSceneRender(SColor(255, 0, 0, 0));
+	Controller::Instance().endSceneRender();
+	/*float frameTime = (irrTimer->getTime() - timeStamp) * 0.001f;
 	timeStamp = irrTimer->getTime();
 
 	// Limit frame rate
@@ -50,7 +52,7 @@ void GameClass::update() {
 	if(extraTime > 0.0f) {
 		irrDevice->sleep((u32)(extraTime * 1000));
 	}
-	currentState->update(frameTime);
+	currentState->update(frameTime);*/
 }
 
 void GameClass::close() {

@@ -21,13 +21,14 @@
 #ifndef GAME_H_
 #define GAME_H_
 
+#include <iostream>
 #include "../log/log.h"
 #include "imports.h"
 #include "singleton.h"
 #include "state.h"
 #include "config.h"
 #include "irrcontroller.h"
-#include <iostream>
+#include "event.h"
 
 class GameClass {
 public:
@@ -42,7 +43,6 @@ public:
 	//states
 	void changeState(State* state);
 	State *getState() {		return currentState;	}
-
 
 private:
 

@@ -22,7 +22,7 @@
 #define CONSTANTS_H_
 
 #define GAME_VERSION  "v0.1.1"
-#define GAME_NAME  "AxaGame"
+#define GAME_NAME  L"AxaGame"
 #define LOG_NAME  "axagame.log"
 
 #endif /* CONSTANTS_H_ */

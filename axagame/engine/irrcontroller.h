@@ -21,6 +21,7 @@
 #ifndef IRRCONTROLLER_H_
 #define IRRCONTROLLER_H_
 
+#include "game.h"
 #include "imports.h"
 #include "globals.h"
 #include "defaults.h"

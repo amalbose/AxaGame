@@ -31,20 +31,24 @@ void Event::resetEvents() {
 	}
 }
 
-bool Event::OnEvent(const SEvent &Event) {
-	switch (Event.EventType) {
+bool Event::OnEvent(const SEvent &event) {
+	Logger(INFO) << "Event";
+
+	switch (event.EventType) {
 	case EET_KEY_INPUT_EVENT:
-
 		// Send key press events
-		if (Event.KeyInput.PressedDown) {
-
-		} else if (!Event.KeyInput.PressedDown) {
+		if (event.KeyInput.PressedDown) {
+			if (event.KeyInput.Key == KEY_KEY_X) {
+				Logger(DEBUG) << "KeyPress";
+				Game::Instance().setDone(true);
+			}
+		} else if (!event.KeyInput.PressedDown) {
 
 		}
 		break;
 	case EET_MOUSE_INPUT_EVENT:
 
-		switch (Event.MouseInput.Event) {
+		switch (event.MouseInput.Event) {
 		case EMIE_LMOUSE_PRESSED_DOWN:
 		case EMIE_RMOUSE_PRESSED_DOWN:
 		case EMIE_MMOUSE_PRESSED_DOWN:

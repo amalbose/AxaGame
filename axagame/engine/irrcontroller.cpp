@@ -20,17 +20,31 @@
 
 #include "irrcontroller.h"
 
+class MyEventReceiver: public IEventReceiver {
+public:
+	bool OnEvent(const irr::SEvent& event) {
+		Logger(WARN) << "Event...";
+
+		if (event.EventType == EET_KEY_INPUT_EVENT) {
+			Game::Instance().close();
+			return false;
+		}
+		return false;
+	}
+};
+
 int IrrlichtController::init(E_DRIVER_TYPE deviceType, const core::dimension2d<u32>& windowSize, u32 bits,
 		bool fullscreen, bool stencilbuffer, bool vsync, IEventReceiver* receiver) {
 
-	irrDevice = createDevice(deviceType, windowSize, bits, fullscreen, stencilbuffer, vsync, receiver);
+	irrDevice = createDevice(deviceType, windowSize, bits, fullscreen, stencilbuffer, vsync, 0);
 
 	if (irrDevice == NULL) {
 		Logger(ERROR) << "Setting up Irrlicht Device failed.";
 		return 1;
 	}
-	irrDevice->setWindowCaption((wchar_t*) GAME_NAME);
-	irrDevice->setEventReceiver(receiver);
+	irrDevice->setWindowCaption(GAME_NAME);
+	MyEventReceiver ev;
+	irrDevice->setEventReceiver(&ev);
 	irrDevice->getCursorControl()->setVisible(false);
 
 	// Save off global pointers
@@ -63,3 +77,4 @@ bool IrrlichtController::beginSceneRender() {
 void IrrlichtController::endSceneRender() {
 	irrDriver->endScene();
 }
+
