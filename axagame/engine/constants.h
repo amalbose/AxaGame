@@ -24,5 +24,6 @@
 #define GAME_VERSION  "v0.1.1"
 #define GAME_NAME  L"AxaGame"
 #define LOG_NAME  "axagame.log"
+#define CONFIG_FILE "config.prop"
 
 #endif /* CONSTANTS_H_ */
