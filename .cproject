@@ -70,7 +70,8 @@
 					</folderInfo>
 					<sourceEntries>
 						<entry excluding="axagame|engine" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
-						<entry excluding="utils|log|engine" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame"/>
+						<entry excluding="data|utils|log|engine" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame/data"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame/engine"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame/log"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame/utils"/>
@@ -122,7 +123,8 @@
 					</folderInfo>
 					<sourceEntries>
 						<entry excluding="engine|axagame" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
-						<entry excluding="utils|log|engine" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame"/>
+						<entry excluding="data|utils|log|engine" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame/data"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame/engine"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame/log"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame/utils"/>
