@@ -33,5 +33,7 @@ const bool FULLSCREEN = false;
 const bool SHADOWS = true;
 const bool TRILINEAR_FILTERING = true;
 const bool SHADERS = false;
+const bool STENCIL_BUFFER = false;
+const bool VSYNC = true;
 
 #endif /* DEFAULTS_H_ */
