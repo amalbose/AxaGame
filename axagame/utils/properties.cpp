@@ -26,6 +26,7 @@ Properties::Properties(char *fileName) {
 	if (propFile == NULL) {
 		Logger(ERROR) << "Error initializing log file : " << fileName;
 	}
+	populateProps();
 }
 
 void Properties::populateProps() {
@@ -49,4 +50,8 @@ void Properties::populateProps() {
 		value = line.substr(posEqual + 1);
 		propertyList.insert(std::pair<std::string, std::string>(name, value));
 	}
+}
+
+std::string Properties::getValue(char* key){
+	return propertyList[key];
 }

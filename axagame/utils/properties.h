@@ -30,7 +30,7 @@
 class Properties {
 public:
 	Properties(char *fileName);
-	char *getValue(char* key);
+	std::string getValue(char* key);
 
 private:
 	Properties();
