@@ -30,6 +30,8 @@ int GameClass::init(int argc, char **argv) {
 		Logger(ERROR) << "Initialization of config file failed.";
 		return 1;
 	}
+	Config::Instance().readConfig();
+
 	event = new Event();
 	//Setting up IrrlichDevice
 	if(Controller::Instance().init(EDT_OPENGL,
