@@ -20,25 +20,31 @@
 #ifndef CONFIG_H_
 #define CONFIG_H_
 
+#include "imports.h"
 #include "singleton.h"
 #include "defaults.h"
+#include "constants.h"
+#include "../utils/properties.h"
+#include <string>
 
 class ConfigClass {
 public:
-
-	//irrlicht driver arguments
-	int driverType, screenWidth, screenHeight, anisotropicFiltering, antiAliasing;
-	bool fullscreen, shadows, trilinearFiltering, shaders;
-
+	ConfigClass();
 	int initConfig();
 	void closeConfig();
 	int resetConfig();
 
 	int readConfig();
 	int writeConfig();
+private:
+	//irrlicht driver arguments
+	int driverType, screenWidth, screenHeight, anisotropicFiltering, antiAliasing, bits;
+	bool fullscreen, shadows, trilinearFiltering, shaders, stencil, vsync;
+	char * configFile;
+	int getDriverType(std::string type);
+	bool getBool(std::string boolVal);
 };
 
 typedef Singleton<ConfigClass> Config;
-
 
 #endif /* CONFIG_H_ */

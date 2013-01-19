@@ -20,6 +20,10 @@
 
 #include "config.h"
 
+ConfigClass::ConfigClass() :
+		configFile(CONFIG_FILE) {
+}
+
 int ConfigClass::initConfig() {
 	return resetConfig();
 }
@@ -36,6 +40,67 @@ int ConfigClass::resetConfig() {
 	antiAliasing = ANTIALIASING;
 	anisotropicFiltering = ANISOTROPIC_FILTERING;
 	trilinearFiltering = TRILINEAR_FILTERING;
+	stencil = STENCIL_BUFFER;
+	vsync = VSYNC;
 
 	return 0;
+}
+
+int ConfigClass::readConfig() {
+	Properties prop(configFile);
+
+	//getting driver
+	std::string tmp = prop.getValue("DRIVER_TYPE");
+	if (!tmp.empty()) {
+		driverType = getDriverType(tmp);
+	}
+	//screen width
+	tmp = prop.getValue("SCREEN_WIDTH");
+	if (!tmp.empty()) {
+		screenWidth = atoi(tmp.c_str());
+	}
+	//screen height
+	tmp = prop.getValue("SCREEN_HEIGHT");
+	if (!tmp.empty()) {
+		screenHeight = atoi(tmp.c_str());
+	}
+	//full screen
+	tmp = prop.getValue("FULLSCREEN");
+	if (!tmp.empty()) {
+		fullscreen = getBool(tmp);
+	}
+	//stencil
+	tmp = prop.getValue("STENCIL_BUFFER");
+	if (!tmp.empty()) {
+		stencil = getBool(tmp);
+	}
+	//vsync
+	tmp = prop.getValue("VSYNC");
+	if (!tmp.empty()) {
+		vsync = getBool(tmp);
+	}
+	//bits
+	tmp = prop.getValue("BITS");
+	if (!tmp.empty()) {
+		bits = atoi(tmp.c_str());
+	}
+	return 0;
+}
+
+int ConfigClass::getDriverType(std::string type) {
+	int dType = 0;
+	if (type.find("OPENGL") != std::string::npos) {
+		dType = EDT_OPENGL;
+	} else if (type.find("DIRECTX") != std::string::npos) {
+		dType = EDT_DIRECT3D9;
+	}
+	return dType;
+}
+
+bool ConfigClass::getBool(std::string boolVal) {
+	if ((boolVal.find("TRUE") != std::string::npos) || (boolVal.find("true") != std::string::npos)) {
+		return true;
+	} else {
+		return false;
+	}
 }
