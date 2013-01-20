@@ -26,21 +26,23 @@
 class State {
 
 public:
-		virtual int init() { return 1; }
-		virtual int close() { return 1; }
+	irr::core::stringc getStateName() { return stateName; }
+	virtual int init() { return 1; }
+	virtual int close() { return 1; }
 
-		virtual ~State() { }
+	virtual ~State() { }
 
-		virtual bool onKeyPress(int key) { return false; }
-		virtual bool onKeyLift(int key) { return false; }
-		virtual void onMouseMotion(float valueX, float valueY) { }
-		virtual bool onMousePress(int button, int valueX, int valueY) { return false; }
-		virtual void onMouseLift(int button, int valueX, int valueY) { }
+	virtual bool onKeyPress(int key) { return false; }
+	virtual bool onKeyLift(int key) { return false; }
+	virtual void onMouseMotion(float valueX, float valueY) { }		virtual bool onMousePress(int button, int valueX, int valueY) { return false; }
+	virtual void onMouseLift(int button, int valueX, int valueY) { }
 //		virtual void onMouseWheel(float direction) { }
 
-		virtual void update(float FrameTime) { }
-		virtual void updateRender(float TimeStepRemainder) { }
-		virtual void render() { }
+	virtual void update(float FrameTime) { }
+	virtual void updateRender(float TimeStepRemainder) { }
+	virtual void render() { }
+private:
+	irr::core::stringc stateName;
 };
 
 
