@@ -36,4 +36,6 @@ const bool SHADERS = false;
 const bool STENCIL_BUFFER = false;
 const bool VSYNC = true;
 
+const int FPS = 60;
+
 #endif /* DEFAULTS_H_ */
