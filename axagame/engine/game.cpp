@@ -34,8 +34,10 @@ int GameClass::init(int argc, char **argv) {
 
 	event = new Event();
 	//Setting up IrrlichDevice
-	if(Controller::Instance().init(EDT_OPENGL,
-			(core::dimension2d<u32>(1024, 768)), 32, false, false, false, event)) {
+	if (Controller::Instance().init(Config::Instance().getDriverType(),
+			(core::dimension2d<u32>(Config::Instance().getScreenWidth(), Config::Instance().getScreenHeight())),
+			Config::Instance().getBits(), Config::Instance().getFullscreen(), Config::Instance().getStencil(),
+			Config::Instance().getVsync(), event)) {
 		Logger(ERROR) << "Failed to initialize Controller.";
 		return 1;
 	}
@@ -49,14 +51,14 @@ void GameClass::update() {
 	irrScene->drawAll();
 	Controller::Instance().endSceneRender();
 	/*float frameTime = (irrTimer->getTime() - timeStamp) * 0.001f;
-	timeStamp = irrTimer->getTime();
+	 timeStamp = irrTimer->getTime();
 
-	// Limit frame rate
-	float extraTime = 1.0f / sleepRate - frameTime;
-	if(extraTime > 0.0f) {
-		irrDevice->sleep((u32)(extraTime * 1000));
-	}
-	currentState->update(frameTime);*/
+	 // Limit frame rate
+	 float extraTime = 1.0f / sleepRate - frameTime;
+	 if(extraTime > 0.0f) {
+	 irrDevice->sleep((u32)(extraTime * 1000));
+	 }
+	 currentState->update(frameTime);*/
 
 }
 
