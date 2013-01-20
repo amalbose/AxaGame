@@ -36,9 +36,31 @@ public:
 
 	int readConfig();
 	int writeConfig();
+
+	E_DRIVER_TYPE getDriverType() const { return driverType; }
+
+	int getAnisotropicFiltering() const {		return anisotropicFiltering;	}
+
+	int getAntiAliasing() const {		return antiAliasing;	}
+
+	int getBits() const {		return bits;	}
+
+	char* getConfigFile() const {		return configFile;	}
+
+	bool getFullscreen() const {		return fullscreen;	}
+
+	int getScreenHeight() const {		return screenHeight;	}
+
+	int getScreenWidth() const {		return screenWidth;}
+
+	bool getStencil() const {		return stencil;	}
+
+	bool getVsync() const {		return vsync;	}
+
 private:
 	//irrlicht driver arguments
-	int driverType, screenWidth, screenHeight, anisotropicFiltering, antiAliasing, bits;
+	int screenWidth, screenHeight, anisotropicFiltering, antiAliasing, bits;
+	E_DRIVER_TYPE driverType;
 	bool fullscreen, shadows, trilinearFiltering, shaders, stencil, vsync;
 	char * configFile;
 	int getDriverType(std::string type);
