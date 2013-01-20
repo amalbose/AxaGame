@@ -24,7 +24,7 @@ int GameClass::init(int argc, char **argv) {
 
 	isWindowActive = true;
 	isRunning = true;
-	sleepRate = 120.0f;
+	skipTicks = (float) 1000 / FPS;
 	//Initialize Config
 	if (Config::Instance().initConfig()) {
 		Logger(ERROR) << "Initialization of config file failed.";
@@ -41,24 +41,21 @@ int GameClass::init(int argc, char **argv) {
 		Logger(ERROR) << "Failed to initialize Controller.";
 		return 1;
 	}
+	nextTick = irrTimer->getTime();
 	return 0;
 }
 
 void GameClass::update() {
 
 	irrDevice->run();
+	nextTick += skipTicks;
+	sleepTime = (nextTick - irrTimer->getTime()) * 0.001f;
+	if (sleepTime > 0.0f) {
+		irrDevice->sleep((u32) (sleepTime * 1000));
+	}
 	Controller::Instance().beginSceneRender(SColor(255, 0, 0, 0));
 	irrScene->drawAll();
 	Controller::Instance().endSceneRender();
-	/*float frameTime = (irrTimer->getTime() - timeStamp) * 0.001f;
-	 timeStamp = irrTimer->getTime();
-
-	 // Limit frame rate
-	 float extraTime = 1.0f / sleepRate - frameTime;
-	 if(extraTime > 0.0f) {
-	 irrDevice->sleep((u32)(extraTime * 1000));
-	 }
-	 currentState->update(frameTime);*/
 
 }
 

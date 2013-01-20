@@ -29,6 +29,7 @@
 #include "config.h"
 #include "irrcontroller.h"
 #include "event.h"
+#include "defaults.h"
 
 class GameClass {
 public:
@@ -49,7 +50,7 @@ private:
 
 	bool isRunning, isWindowActive;
 	State *currentState;
-	float timeStamp,sleepRate;
+	float nextTick, skipTicks, sleepTime;
 };
 
 typedef Singleton<GameClass> Game;
