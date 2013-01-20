@@ -31,7 +31,7 @@ int ConfigClass::initConfig() {
 int ConfigClass::resetConfig() {
 
 	//Giving default values
-	driverType = DRIVER_TYPE;
+	driverType = (E_DRIVER_TYPE) DRIVER_TYPE;
 	screenWidth = SCREEN_WIDTH;
 	screenHeight = SCREEN_HEIGHT;
 	fullscreen = FULLSCREEN;
@@ -52,7 +52,7 @@ int ConfigClass::readConfig() {
 	//getting driver
 	std::string tmp = prop.getValue("DRIVER_TYPE");
 	if (!tmp.empty()) {
-		driverType = getDriverType(tmp);
+		driverType = (E_DRIVER_TYPE) getDriverType(tmp);
 	}
 	//screen width
 	tmp = prop.getValue("SCREEN_WIDTH");
