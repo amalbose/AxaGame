@@ -53,6 +53,8 @@ void GameClass::update() {
 	if (sleepTime > 0.0f) {
 		irrDevice->sleep((u32) (sleepTime * 1000));
 	}
+	//stateManager->getCurrentState()->update(1.0);
+	//stateManager->getCurrentState()->updateRender(1.0);
 	Controller::Instance().beginSceneRender(SColor(255, 0, 0, 0));
 	irrScene->drawAll();
 	Controller::Instance().endSceneRender();

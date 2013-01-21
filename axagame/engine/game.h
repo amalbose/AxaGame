@@ -30,6 +30,7 @@
 #include "irrcontroller.h"
 #include "event.h"
 #include "defaults.h"
+#include "stateman.h"
 
 class GameClass {
 public:
@@ -42,14 +43,12 @@ public:
 	void setDone(bool value) { isRunning = !value; }
 
 	//states
-	void changeState(State* state);
-	State *getState() {		return currentState;	}
 	IEventReceiver* event;
 
 private:
 
 	bool isRunning, isWindowActive;
-	State *currentState;
+	StateManager *stateManager;
 	float nextTick, skipTicks, sleepTime;
 };
 
