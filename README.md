@@ -1,11 +1,11 @@
 AxaGame
 =======
-<pre>
+
    __    _  _    __    ___    __    __  __  ____ 
   /__\  ( \/ )  /__\  / __)  /__\  (  \/  )( ___)
  /(__)\  )  (  /(__)\( (_-. /(__)\  )    (  )__) 
 (__)(__)(_/\_)(__)(__)\___/(__)(__)(_/\/\_)(____)
-</pre>
+
 
 Base framework for Irrlicht games which can be used for creating games in Irrlicht.
 
