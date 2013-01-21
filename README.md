@@ -5,7 +5,6 @@ AxaGame
  / _\ ( \/ ) / _\  / __) / _\ ( \/ )(  __)
 /    \ )  ( /    \( (_ \/    \/ \/ \ ) _) 
 \_/\_/(_/\_)\_/\_/ \___/\_/\_/\_)(_/(____)
-
 </pre>
 
 Base framework for Irrlicht games which can be used for creating games in Irrlicht.
