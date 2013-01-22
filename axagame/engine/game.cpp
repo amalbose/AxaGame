@@ -24,7 +24,6 @@ int GameClass::init(int argc, char **argv) {
 
 	isWindowActive = true;
 	isRunning = true;
-	skipTicks = (float) 1000 / FPS;
 	//Initialize Config
 	if (Config::Instance().initConfig()) {
 		Logger(ERROR) << "Initialization of config file failed.";
@@ -46,19 +45,24 @@ int GameClass::init(int argc, char **argv) {
 }
 
 void GameClass::update() {
+	loops = 0;
 
 	irrDevice->run();
-	nextTick += skipTicks;
-	sleepTime = (nextTick - irrTimer->getTime()) * 0.001f;
-	if (sleepTime > 0.0f) {
-		irrDevice->sleep((u32) (sleepTime * 1000));
+
+	loops = 0;
+	while (irrTimer->getTime() > nextTick && loops < MAX_FRAMESKIP) {
+		//update();
+		//stateManager->getCurrentState()->update(1.0);
+		nextTick += SKIP_TICKS;
+		loops++;
 	}
-	//stateManager->getCurrentState()->update(1.0);
-	//stateManager->getCurrentState()->updateRender(1.0);
+
+	interpolation = float(irrTimer->getTime() + SKIP_TICKS - nextTick) / float(SKIP_TICKS);
+	//display_game( interpolation );
+	//stateManager->getCurrentState()->updateRender(interpolation);
 	Controller::Instance().beginSceneRender(SColor(255, 0, 0, 0));
 	irrScene->drawAll();
 	Controller::Instance().endSceneRender();
-
 }
 
 void GameClass::close() {

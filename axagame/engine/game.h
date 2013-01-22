@@ -39,8 +39,12 @@ public:
 	void update();
 	void close();
 
-	bool isDone() { return !isRunning;}
-	void setDone(bool value) { isRunning = !value; }
+	bool isDone() {
+		return !isRunning;
+	}
+	void setDone(bool value) {
+		isRunning = !value;
+	}
 
 	//states
 	IEventReceiver* event;
@@ -49,7 +53,11 @@ private:
 
 	bool isRunning, isWindowActive;
 	StateManager *stateManager;
-	float nextTick, skipTicks, sleepTime;
+	int loops;
+	float nextTick,interpolation;
+	const int TICKS_PER_SECOND = 25;
+	const int SKIP_TICKS = 1000 / TICKS_PER_SECOND;
+	const int MAX_FRAMESKIP = 5;
 };
 
 typedef Singleton<GameClass> Game;
