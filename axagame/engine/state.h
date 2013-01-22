@@ -38,9 +38,9 @@ public:
 	virtual void onMouseLift(int button, int valueX, int valueY) { }
 //		virtual void onMouseWheel(float direction) { }
 
-	virtual void update(float FrameTime) { }
-	virtual void updateRender(float TimeStepRemainder) { }
-	virtual void render() { }
+	virtual void update() { }
+	virtual void updateRender() { }
+	virtual void render(float interpolation) { }
 private:
 	irr::core::stringc stateName;
 };

@@ -52,14 +52,15 @@ void GameClass::update() {
 	loops = 0;
 	while (irrTimer->getTime() > nextTick && loops < MAX_FRAMESKIP) {
 		//update();
-		//stateManager->getCurrentState()->update(1.0);
+		//stateManager->getCurrentState()->update();
+		//stateManager->getCurrentState()->updateRender();
 		nextTick += SKIP_TICKS;
 		loops++;
 	}
 
 	interpolation = float(irrTimer->getTime() + SKIP_TICKS - nextTick) / float(SKIP_TICKS);
 	//display_game( interpolation );
-	//stateManager->getCurrentState()->updateRender(interpolation);
+	//stateManager->getCurrentState()->render(interpolation);
 	Controller::Instance().beginSceneRender(SColor(255, 0, 0, 0));
 	irrScene->drawAll();
 	Controller::Instance().endSceneRender();
