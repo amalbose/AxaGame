@@ -46,10 +46,8 @@ int GameClass::init(int argc, char **argv) {
 
 void GameClass::update() {
 	loops = 0;
-
 	irrDevice->run();
 
-	loops = 0;
 	while (irrTimer->getTime() > nextTick && loops < MAX_FRAMESKIP) {
 		//update();
 		//stateManager->getCurrentState()->update();
