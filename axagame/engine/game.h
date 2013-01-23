@@ -22,7 +22,7 @@
 #define GAME_H_
 
 #include <iostream>
-#include "../log/log.h"
+#include "../utils/logger.h"
 #include "imports.h"
 #include "singleton.h"
 #include "state.h"

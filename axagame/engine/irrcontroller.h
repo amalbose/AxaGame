@@ -21,13 +21,13 @@
 #ifndef IRRCONTROLLER_H_
 #define IRRCONTROLLER_H_
 
-#include "game.h"
 #include "imports.h"
+#include "game.h"
 #include "globals.h"
 #include "defaults.h"
 #include "singleton.h"
 #include "constants.h"
-#include "../log/log.h"
+#include "../utils/logger.h"
 
 class IrrlichtController {
 
