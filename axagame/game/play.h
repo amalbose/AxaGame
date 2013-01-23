@@ -21,7 +21,9 @@
 #ifndef PLAY_H_
 #define PLAY_H_
 
+#include "../engine/constants.h"
 #include "../engine/state.h"
+#include "../utils/logger.h"
 
 class Play: public State {
 public:
