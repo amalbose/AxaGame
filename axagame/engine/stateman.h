@@ -22,6 +22,7 @@
 #define STATEMAN_H_
 
 #include "imports.h"
+#include "../game/play.h"
 #include "state.h"
 
 class StateManager {
@@ -29,11 +30,11 @@ public:
 	StateManager();
 	virtual ~StateManager();
 	State* getCurrentState() { return currentState; };
+	void setCurrentState(irr::core::stringc strName);
 
 private:
-	core::array<State> stateList;
+	core::array<State*> stateList;
 	void clear();
-	void setCurrentState(irr::core::stringc strName);
 	State* currentState;
 };
 
