@@ -21,8 +21,9 @@
 #include "stateman.h"
 
 StateManager::StateManager() {
-	// TODO Auto-generated constructor stub
-
+	//Adding all states
+	Play* playState = new Play();
+	stateList.push_back(playState);
 }
 
 StateManager::~StateManager() {
@@ -33,22 +34,21 @@ void StateManager::setCurrentState(irr::core::stringc strName) {
 	// Local variables.
 	irr::u32 i = 0;
 	bool bFound = false;
-
 	// For each state in the list, check if names match.
 	while (bFound == false && i < stateList.size()) {
-		if (stateList[i].getStateName().equals_ignore_case(strName))
+		if (stateList[i]->getStateName().equals_ignore_case(strName)){
 			bFound = true;
+		}
 		else
 			i++;
 	}
-
 	// If exists, release current state.
-	if (currentState != NULL)
-		currentState->close();
+	/*if (currentState != NULL)
+		currentState->close();*/
 
 	// If state was found, set as current and initialize.
 	if (bFound == true) {
-		currentState = &stateList[i];
+		currentState = stateList[i];
 		currentState->init();
 	}
 }
