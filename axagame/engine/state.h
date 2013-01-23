@@ -34,13 +34,15 @@ public:
 
 	virtual bool onKeyPress(int key) { return false; }
 	virtual bool onKeyLift(int key) { return false; }
-	virtual void onMouseMotion(float valueX, float valueY) { }		virtual bool onMousePress(int button, int valueX, int valueY) { return false; }
+	virtual void onMouseMotion(float valueX, float valueY) { }
+	virtual bool onMousePress(int button, int valueX, int valueY) { return false; }
 	virtual void onMouseLift(int button, int valueX, int valueY) { }
 //		virtual void onMouseWheel(float direction) { }
 
 	virtual void update() { }
 	virtual void updateRender() { }
 	virtual void render(float interpolation) { }
+	void setStateName(irr::core::stringc name) { stateName = name; }
 private:
 	irr::core::stringc stateName;
 };
