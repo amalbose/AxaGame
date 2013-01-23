@@ -26,4 +26,7 @@
 #define LOG_NAME  "axagame.log"
 #define CONFIG_FILE "axagame/data/config.prop"
 
+//states
+#define STATE_PLAY "PLAYSTATE"
+
 #endif /* CONSTANTS_H_ */
