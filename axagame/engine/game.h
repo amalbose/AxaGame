@@ -31,6 +31,7 @@
 #include "event.h"
 #include "defaults.h"
 #include "stateman.h"
+#include "constants.h"
 
 class GameClass {
 public:
