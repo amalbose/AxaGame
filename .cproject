@@ -55,7 +55,7 @@
 									<listOptionValue builtIn="false" value="LinearMath"/>
 								</option>
 								<option id="gnu.cpp.link.option.paths.1101756438" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
-									<listOptionValue builtIn="false" value="/home/amalbose/Softwares/irrlicht-1.7.3/lib/Linux"/>
+									<listOptionValue builtIn="false" value="/home/amalbose/Softwares/irrlicht-1.7.3/bin/Linux"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.163636184" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
@@ -72,10 +72,11 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="axagame|test|engine" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
-						<entry excluding="data|log|engine|utils" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame"/>
+						<entry excluding="axagame|game|test|engine" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="game|data|log|engine|utils" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame/data"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame/engine"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame/game"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame/utils"/>
 					</sourceEntries>
 				</configuration>
@@ -124,10 +125,11 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="test|engine|axagame" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
-						<entry excluding="data|utils|log|engine" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame"/>
+						<entry excluding="game|test|engine|axagame" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="game|data|utils|log|engine" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame/data"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame/engine"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame/game"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="axagame/utils"/>
 					</sourceEntries>
 				</configuration>
