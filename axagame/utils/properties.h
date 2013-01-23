@@ -25,7 +25,7 @@
 #include <fstream>
 #include <string>
 #include <map>
-#include "../log/log.h"
+#include "logger.h"
 
 class Properties {
 public:
