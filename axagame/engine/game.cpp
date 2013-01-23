@@ -40,6 +40,11 @@ int GameClass::init(int argc, char **argv) {
 		Logger(ERROR) << "Failed to initialize Controller.";
 		return 1;
 	}
+
+	//Initialize state manager
+	stateManager = new StateManager();
+	stateManager->setCurrentState(STATE_PLAY);
+
 	nextTick = irrTimer->getTime();
 	return 0;
 }
@@ -50,15 +55,15 @@ void GameClass::update() {
 
 	while (irrTimer->getTime() > nextTick && loops < MAX_FRAMESKIP) {
 		//update();
-		//stateManager->getCurrentState()->update();
-		//stateManager->getCurrentState()->updateRender();
+		stateManager->getCurrentState()->update();
+		stateManager->getCurrentState()->updateRender();
 		nextTick += SKIP_TICKS;
 		loops++;
 	}
 
 	interpolation = float(irrTimer->getTime() + SKIP_TICKS - nextTick) / float(SKIP_TICKS);
 	//display_game( interpolation );
-	//stateManager->getCurrentState()->render(interpolation);
+	stateManager->getCurrentState()->render(interpolation);
 	Controller::Instance().beginSceneRender(SColor(255, 0, 0, 0));
 	irrScene->drawAll();
 	Controller::Instance().endSceneRender();
