@@ -21,8 +21,7 @@
 #include "play.h"
 
 Play::Play() {
-	// TODO Auto-generated constructor stub
-
+	setStateName(STATE_PLAY);
 }
 
 Play::~Play() {
