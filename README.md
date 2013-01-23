@@ -11,8 +11,10 @@ Base framework for Irrlicht games which can be used for creating games in Irrlic
 
 Requirements
 ------------
-* Irrlicht 1.7
-* Bullet Physics
+* Irrlicht 1.7 [Link](http://irrlicht.sourceforge.net/)
+
+* Bullet Physics [Link](http://bulletphysics.org/)
+
 
 Set Up
 ------
